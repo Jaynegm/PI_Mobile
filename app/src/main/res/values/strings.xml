@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ATIVIDADE001</string>
+    <string name="button">Button</string>
+    <string name="senha">Senha</string>
 </resources>

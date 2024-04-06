@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- Barra de Pesquisa -->
-    <EditText
-        android:id="@+id/searchBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Pesquisar..."
-        android:padding="8dp"
-        android:background="@android:color/darker_gray"
-        android:textColorHint="@android:color/white"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:layout_alignParentTop="true"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- Cards -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/searchBar"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
@@ -86,4 +74,4 @@
                 app:layout_constraintTop_toBottomOf="@id/valorProduto" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</LinearLayout>

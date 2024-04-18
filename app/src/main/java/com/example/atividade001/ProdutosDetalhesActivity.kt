@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class ProdutoDetalhesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_produto_detalhes)
+        setContentView(R.layout.activity_produtos_detalhes)
 
         val nomeProduto = intent.getStringExtra("NOME_PRODUTO")
         val descricaoProduto = intent.getStringExtra("DESCRICAO_PRODUTO")

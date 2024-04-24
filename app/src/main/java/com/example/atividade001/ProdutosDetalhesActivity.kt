@@ -27,6 +27,7 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
         val produtoId = intent.getIntExtra("PRODUTO_ID", 0)
         val quantidadeDisponivel = intent.getIntExtra("QUANTIDADE_DISPONIVEL", 0)
 
+
         findViewById<TextView>(R.id.txtNomeProduto).text = nomeProduto
         findViewById<TextView>(R.id.txtDescricaoProduto).text = descricaoProduto
         findViewById<TextView>(R.id.txtQuantidadeDisponivel).text = quantidadeDisponivel.toString()
@@ -34,21 +35,22 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
         val editTextQuantidade = findViewById<EditText>(R.id.editQuantidadeDesejada)
         val btnAdicionarCarrinho = findViewById<Button>(R.id.btnAdicionarAoCarrinho)
 
-        val sharedPreferences = getSharedPreferences("Dados", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        val userId = sharedPreferences.getInt("userId", 0)
-        editor.putInt("userId", 0)
+        val variavelComId = 0
+        editor.putInt("userId", variavelComId)
         editor.apply()
 
         btnAdicionarCarrinho.setOnClickListener {
             val quantidadeDesejada = editTextQuantidade.text.toString().toIntOrNull() ?: 0
+            val userId = 0
             adicionarAoCarrinho(userId, produtoId, quantidadeDesejada)
         }
     }
 
     private fun adicionarAoCarrinho(userId: Int, produtoId: Int, quantidade: Int) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://144.22.157.228:3306/")
+            .baseUrl("https://12746cbd-77e6-4f72-9c25-47a219be274e-00-274zo2e79g7dj.riker.repl.co/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 

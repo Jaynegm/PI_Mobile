@@ -2,4 +2,15 @@
     <string name="app_name">ATIVIDADE001</string>
     <string name="button">Button</string>
     <string name="senha">Senha</string>
+
+    <!-- Checkout activity -->
+    <string name="title_activity_checkout">CheckoutActivity</string>
+    <string name="checkout_item_description">Description</string>
+    <string name="googlepay_status_unavailable" translatable="false">Unfortunately, Google Pay is
+        not available on this phone.
+    </string>
+    <string name="payments_show_name" translatable="false">Successfully received payment data for
+        %s!
+    </string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/descricaoProduto" />
 
     <Button
-        android:id="@+id/btnComprar"
+        android:id="@+id/btn_Comprar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
@@ -52,5 +52,6 @@
         app:layout_constraintEnd_toEndOf="@+id/valorProduto"
         app:layout_constraintStart_toStartOf="@+id/valorProduto"
         app:layout_constraintTop_toBottomOf="@+id/valorProduto" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

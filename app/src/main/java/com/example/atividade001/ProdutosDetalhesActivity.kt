@@ -1,12 +1,11 @@
+
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.atividade001.CartActivity
 import com.example.atividade001.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,12 +47,12 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
     }
 
     //Esse a gente que procura
-        btnCarrinho.setOnClickListener {
-            val intent = Intent(this, CartActivity::class.java)
-            intent.putExtra("userId", userId)
-            startActivity(intent)
-            finish()
-    }
+        //btnCarrinho.setOnClickListener {
+            //val intent = Intent(this, CartActivity::class.java)
+            //intent.putExtra("userId", userId)
+            //startActivity(intent)
+            //finish()
+    //}
 
     private fun adicionarAoCarrinho(userId: Int, produtoId: Int, quantidade: Int) {
         val retrofit = Retrofit.Builder()

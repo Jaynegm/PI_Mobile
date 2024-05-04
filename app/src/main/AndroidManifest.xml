@@ -36,18 +36,10 @@
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".CheckoutActivity"
-            android:exported="false"
-            android:label="@string/title_activity_checkout"
-            android:theme="@style/Theme.ATIVIDADE001" /> <!-- This element is required to enable Google Pay in your app. -->
-        <meta-data
-            android:name="com.google.android.gms.wallet.api.enabled"
-            android:value="true" />
 
         <activity
-            android:name=".ProdutoDetalhesActivity"
-            android:exported="true" />
+            android:name=".ProdutosDetalhesActivity"
+            android:exported="false" />
         <activity
             android:name=".Produto"
             android:exported="false" />

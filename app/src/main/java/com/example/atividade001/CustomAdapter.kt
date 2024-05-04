@@ -1,6 +1,5 @@
 package com.example.atividade001
 
-import ProdutoDetalhesActivity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -37,7 +36,7 @@ class CustomAdapter(private val dataSet: List<Produto>) :
         viewHolder.descricao.text = produto.produtoDesc
         viewHolder.valor.text = produto.produtoPreco
         viewHolder.btnComprar.setOnClickListener {
-            val intent = Intent(viewHolder.itemView.context, ProdutoDetalhesActivity::class.java)
+            val intent = Intent(viewHolder.itemView.context, ProdutosDetalhesActivity::class.java)
             intent.putExtra("ID_PRODUTO", produto.produtoId)
             intent.putExtra("NOME_PRODUTO", produto.produtoNome)
             intent.putExtra("DESCRICAO_PRODUTO", produto.produtoDesc)

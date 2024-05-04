@@ -1,5 +1,6 @@
 package com.example.atividade001
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -54,6 +55,19 @@ import retrofit2.http.Query
                     val loginResponses = response.body()!!
                     if (loginResponses.isNotEmpty()) {
                         val intent = Intent(this@User, MainActivity::class.java)
+
+
+
+
+
+
+                        val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putInt("userId", loginResponses.get(0).USUARIO_ID)
+                        editor.apply()
+
+
+
                         startActivity(intent)
                         finish()
                     } else {

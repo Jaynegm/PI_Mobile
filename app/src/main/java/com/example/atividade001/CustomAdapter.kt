@@ -37,9 +37,9 @@ class CustomAdapter(private val dataSet: List<Produto>) :
         viewHolder.valor.text = produto.produtoPreco
         viewHolder.btnComprar.setOnClickListener {
             val intent = Intent(viewHolder.itemView.context, ProdutosDetalhesActivity::class.java)
-            intent.putExtra("ID_PRODUTO", produto.produtoId)
-            intent.putExtra("NOME_PRODUTO", produto.produtoNome)
-            intent.putExtra("DESCRICAO_PRODUTO", produto.produtoDesc)
+            intent.putExtra("PRODUTO_ID", produto.produtoId)
+            intent.putExtra("PRODUTO_NOME", produto.produtoNome)
+            intent.putExtra("PRODUTO_DESC", produto.produtoDesc)
             intent.putExtra("QUANTIDADE_DISPONIVEL", produto.quantidadeDisponivel)
             viewHolder.itemView.context.startActivity(intent)
         }

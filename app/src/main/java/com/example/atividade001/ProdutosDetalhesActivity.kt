@@ -22,9 +22,9 @@ class ProdutosDetalhesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produtos_detalhes)
 
-        val nomeProduto = intent.getStringExtra("NOME_PRODUTO") ?: "Nome nÃ£o disponÃ­vel"
-        val descricaoProduto = intent.getStringExtra("DESCRICAO_PRODUTO") ?: "DescriÃ§Ã£o nÃ£o disponÃ­vel"
-        val produtoId = intent.getIntExtra("ID_PRODUTO", 0)
+        val nomeProduto = intent.getStringExtra("PRODUTO_NOME") ?: "Nome nÃ£o disponÃ­vel"
+        val descricaoProduto = intent.getStringExtra("PRODUTO_DESC") ?: "DescriÃ§Ã£o nÃ£o disponÃ­vel"
+        val produtoId = intent.getIntExtra("PRODUTO_ID", 0)
         val quantidadeDisponivel = intent.getIntExtra("QUANTIDADE_DISPONIVEL", 0)
 
         findViewById<TextView>(R.id.txtNomeProduto).text = nomeProduto

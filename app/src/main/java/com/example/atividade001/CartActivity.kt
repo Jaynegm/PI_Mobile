@@ -1,4 +1,5 @@
 package com.example.atividade001
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -29,8 +30,18 @@ class CartActivity : AppCompatActivity() {
         fetchCartItems()
 
         goToPaymentButton.setOnClickListener {
-            // Ir para tela de pagamento enviando os dados
+            val intent = Intent(this, PaymentActivity::class.java).apply {
+                putExtra("TOTAL", totalTextView.text.toString())
+                putExtra("USER", 271)  // O ID do usuÃ¡rio deve ser obtido de maneira segura, por exemplo, atravÃ©s de uma sessÃ£o de login com o Shared Preferences
+                val items = null
+                putParcelableArrayListExtra("PRODUCT_LIST", ArrayList(items))
+            }
+            startActivity(intent)
         }
+    }
+
+    class PaymentActivity {
+
     }
 
     private fun fetchCartItems() {

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="btnComprar" type="id" />
-    <item name="txtQuantidadeDisponivel" type="id" />
-    <item name="editQuantidadeDesejada" type="id" />
-</resources>

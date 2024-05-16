@@ -34,7 +34,14 @@ class CustomAdapter(private val dataSet: List<Produto>) :
 
         viewHolder.nome.text = produto.produtoNome
         viewHolder.descricao.text = produto.produtoDesc
-        viewHolder.valor.text = produto.produtoPreco
+        viewHolder.valor.text = produto.produtoPreco.toString()
+
+        Glide.with(viewHolder.itemView.context)
+            .load(produto.imagemUrl)
+            .placeholder(R.drawable.ic_launcher_background) // placeholder
+            .error(com.google.android.material.R.drawable.mtrl_ic_error) // indica erro
+            .into(viewHolder.imagem)
+
         viewHolder.btnComprar.setOnClickListener {
             val intent = Intent(viewHolder.itemView.context, ProdutosDetalhesActivity::class.java)
             intent.putExtra("PRODUTO_ID", produto.produtoId)
@@ -44,10 +51,10 @@ class CustomAdapter(private val dataSet: List<Produto>) :
             viewHolder.itemView.context.startActivity(intent)
         }
 
-        Glide.with(viewHolder.itemView.context)
-            .load(produto.imagemUrl)
-            .placeholder(R.drawable.ic_launcher_background) // placeholder
-            .into(viewHolder.imagem)
+    }
+
+    class ProdutoDetalhesActivity {
+
     }
 
     override fun getItemCount() = dataSet.size

@@ -1,4 +1,6 @@
 package com.example.atividade001
+
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -17,10 +19,15 @@ class CartActivity : AppCompatActivity() {
     private lateinit var totalTextView: TextView
     private lateinit var goToPaymentButton: Button
     private var total: Double = 0.0
+    private lateinit var cartAdapter: CartAdapter
+    private var items: MutableList<Produto> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
+        val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", 0)
 
         recyclerView = findViewById(R.id.cartRecyclerView)
         totalTextView = findViewById(R.id.totalTextView)
@@ -29,36 +36,35 @@ class CartActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         fetchCartItems()
 
+
         goToPaymentButton.setOnClickListener {
             val intent = Intent(this, PaymentActivity::class.java).apply {
-                putExtra("TOTAL", totalTextView.text.toString())
-                putExtra("USER", 271)  // O ID do usuÃ¡rio deve ser obtido de maneira segura, por exemplo, atravÃ©s de uma sessÃ£o de login com o Shared Preferences
-                val items = null
+                var value = updateTotal()
+                putExtra("TOTAL", total.toString())
+                putExtra("USER", userId)
                 putParcelableArrayListExtra("PRODUCT_LIST", ArrayList(items))
             }
             startActivity(intent)
         }
     }
 
-    class PaymentActivity {
-
-    }
-
     private fun fetchCartItems() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://de54397e-a23c-4def-9eb4-b07dde659faa-00-14c35j45l3isu.picard.repl.co/")
+            .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.repl.co/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val api = retrofit.create(CartApiService::class.java)
-        api.getCartItems(userId = 271).enqueue(object : Callback<List<Produto>> {
+
+        val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", 0)
+
+        api.getCartItems(userId).enqueue(object : Callback<List<Produto>> {
             override fun onResponse(call: Call<List<Produto>>, response: Response<List<Produto>>) {
                 if (response.isSuccessful) {
-                    val cartItems = response.body()?.toMutableList() ?: mutableListOf()
-                    recyclerView.adapter = CartAdapter(cartItems, this@CartActivity) {
-                        total = cartItems.sumOf { it.produtoPreco.toDouble() * it.quantidadeDisponivel }
-                        totalTextView.text = "Total: R$${String.format("%.2f", total)}"
-                    }
+                    items = response.body()?.toMutableList() ?: mutableListOf()
+                    setupAdapter()
+                    updateTotal()
                 }
             }
 
@@ -66,5 +72,17 @@ class CartActivity : AppCompatActivity() {
                 // Tratamento de falhas
             }
         })
+    }
+
+    private fun setupAdapter() {
+        cartAdapter = CartAdapter(items, this) { updateTotal() }
+        recyclerView.adapter = cartAdapter
+    }
+
+    fun updateTotal() {
+        total = items.sumOf { (it.produtoPreco?.toDouble() ?: 0.0) * it.quantidadeDisponivel.toDouble() }
+        runOnUiThread {
+            totalTextView.text = "Total: R$${String.format("%.2f", total)}"
+        }
     }
 }

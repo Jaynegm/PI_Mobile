@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-    class User : AppCompatActivity() {
+class User : AppCompatActivity() {
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -39,7 +39,7 @@ import retrofit2.http.Query
         val password = passwordEditText.text.toString().trim()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://4a607bbc-abb9-405d-81f9-d6914b0d35f7-00-7u2f3pny3dry.riker.replit.dev/")
+            .baseUrl(" URL DA SUA API PHP REPLIT ")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -54,26 +54,22 @@ import retrofit2.http.Query
                 if (response.isSuccessful && response.body() != null) {
                     val loginResponses = response.body()!!
                     if (loginResponses.isNotEmpty()) {
-                        val intent = Intent(this@User, MainActivity::class.java)
 
-
-
-
-
+                        val idUser=loginResponses.get(0).USUARIO_ID
 
                         val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putInt("userId", loginResponses.get(0).USUARIO_ID)
-                        editor.apply()
+                        sharedPreferences.edit().apply {
+                            putInt("userId", idUser.toInt())
+                            apply()
+                        }
 
-
-
+                        val intent = Intent(this@User, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         Toast.makeText(
                             this@User,
-                            "UsuÃ¡rio ou senha invÃ¡lidos",
+                            "UsuÃƒÂ¡rio ou senha invÃƒÂ¡lidos",
                             Toast.LENGTH_LONG
                         ).show()
                     }

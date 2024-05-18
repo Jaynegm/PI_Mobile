@@ -1,5 +1,6 @@
 package com.example.atividade001
 
+import Produto
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -39,7 +40,7 @@ class CartActivity : AppCompatActivity() {
 
         goToPaymentButton.setOnClickListener {
             val intent = Intent(this, PaymentActivity::class.java).apply {
-                var value = updateTotal()
+                var value=updateTotal()
                 putExtra("TOTAL", total.toString())
                 putExtra("USER", userId)
                 putParcelableArrayListExtra("PRODUCT_LIST", ArrayList(items))

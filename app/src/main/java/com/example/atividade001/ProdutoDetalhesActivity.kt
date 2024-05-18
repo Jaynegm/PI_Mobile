@@ -1,6 +1,7 @@
 package com.example.atividade001
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -16,15 +17,15 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-class ProdutosDetalhesActivity : AppCompatActivity() {
+class ProdutoDetalhesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produtos_detalhes)
 
-        val nomeProduto = intent.getStringExtra("PRODUTO_NOME") ?: "Nome nÃ£o disponÃ­vel"
-        val descricaoProduto = intent.getStringExtra("PRODUTO_DESC") ?: "DescriÃ§Ã£o nÃ£o disponÃ­vel"
-        val produtoId = intent.getIntExtra("PRODUTO_ID", 0)
+        val nomeProduto = intent.getStringExtra("NOME_PRODUTO") ?: "Nome nÃƒÂ£o disponÃƒÂ­vel"
+        val descricaoProduto = intent.getStringExtra("DESCRICAO_PRODUTO") ?: "DescriÃƒÂ§ÃƒÂ£o nÃƒÂ£o disponÃƒÂ­vel"
+        val produtoId = intent.getIntExtra("ID_PRODUTO", 0)
         val quantidadeDisponivel = intent.getIntExtra("QUANTIDADE_DISPONIVEL", 0)
 
         findViewById<TextView>(R.id.txtNomeProduto).text = nomeProduto
@@ -33,12 +34,16 @@ class ProdutosDetalhesActivity : AppCompatActivity() {
 
         val editTextQuantidade = findViewById<EditText>(R.id.editQuantidadeDesejada)
         val btnAdicionarCarrinho = findViewById<Button>(R.id.btnAdicionarAoCarrinho)
-
+        val btnCarrinho = findViewById<Button>(R.id.btnCarrinho)
 
         val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
         val userId = sharedPreferences.getInt("userId", 0)
-        editor.apply()
+
+        var intent2 = Intent(this@ProdutoDetalhesActivity, CartActivity::class.java)
+        intent2.putExtra("userId", userId)
+        btnCarrinho.setOnClickListener {
+            startActivity(intent2)
+        }
 
         btnAdicionarCarrinho.setOnClickListener {
             val quantidadeDesejada = editTextQuantidade.text.toString().toIntOrNull() ?: 0
@@ -56,14 +61,14 @@ class ProdutosDetalhesActivity : AppCompatActivity() {
         api.adicionarAoCarrinho(userId, produtoId, quantidade).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@ProdutosDetalhesActivity, response.body() ?: "Sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ProdutoDetalhesActivity, response.body() ?: "Sucesso!", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this@ProdutosDetalhesActivity, "Resposta nÃ£o bem-sucedida", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ProdutoDetalhesActivity, "Resposta nÃƒÂ£o bem-sucedida", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Toast.makeText(this@ProdutosDetalhesActivity, "Erro na API: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProdutoDetalhesActivity, "Erro na API: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

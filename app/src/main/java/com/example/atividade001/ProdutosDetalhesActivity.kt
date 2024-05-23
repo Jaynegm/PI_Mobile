@@ -17,7 +17,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-class ProdutoDetalhesActivity : AppCompatActivity() {
+class ProdutosDetalhesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE)
         val userId = sharedPreferences.getInt("userId", 0)
 
-        var intent2 = Intent(this@ProdutoDetalhesActivity, CartActivity::class.java)
+        var intent2 = Intent(this@ProdutosDetalhesActivity, CartActivity::class.java)
         intent2.putExtra("userId", userId)
         btnCarrinho.setOnClickListener {
             startActivity(intent2)
@@ -53,7 +53,7 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
 
     private fun adicionarAoCarrinho(userId: Int, produtoId: Int, quantidade: Int) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.replit.dev/")
+            .baseUrl("https://12746cbd-77e6-4f72-9c25-47a219be274e-00-274zo2e79g7dj.riker.replit.dev/")
             .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 
@@ -61,14 +61,14 @@ class ProdutoDetalhesActivity : AppCompatActivity() {
         api.adicionarAoCarrinho(userId, produtoId, quantidade).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@ProdutoDetalhesActivity, response.body() ?: "Sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ProdutosDetalhesActivity, response.body() ?: "Sucesso!", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this@ProdutoDetalhesActivity, "Resposta nÃƒÂ£o bem-sucedida", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ProdutosDetalhesActivity, "Resposta nÃƒÂ£o bem-sucedida", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-                Toast.makeText(this@ProdutoDetalhesActivity, "Erro na API: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProdutosDetalhesActivity, "Erro na API: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

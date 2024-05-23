@@ -1,6 +1,5 @@
 package com.example.atividade001
 
-import Produto
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -46,7 +45,7 @@ class PaymentActivity : AppCompatActivity() {
 
     private fun enviaOrdem(userId: Int, total: Double, products: ArrayList<Produto>?) {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://292bcae9-ca5e-4163-8642-7a1e875ee12e-00-1l6vkopzq5vlc.worf.repl.co/")
+            .baseUrl("https://6320bcc4-6c03-4436-a147-401466178c85-00-1vw7041mwt6on.spock.replit.dev/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

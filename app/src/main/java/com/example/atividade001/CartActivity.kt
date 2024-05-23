@@ -1,6 +1,5 @@
 package com.example.atividade001
 
-import Produto
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -51,7 +50,7 @@ class CartActivity : AppCompatActivity() {
 
     private fun fetchCartItems() {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.repl.co/")
+            .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.replit.dev/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

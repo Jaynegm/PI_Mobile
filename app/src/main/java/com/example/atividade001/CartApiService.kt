@@ -1,5 +1,4 @@
 package com.example.atividade001
-import Produto
 import retrofit2.Call
 import retrofit2.http.DELETE
 import retrofit2.http.GET

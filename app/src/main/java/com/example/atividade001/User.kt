@@ -39,7 +39,7 @@ class User : AppCompatActivity() {
         val password = passwordEditText.text.toString().trim()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(" URL DA SUA API PHP REPLIT ")
+            .baseUrl("https://4a607bbc-abb9-405d-81f9-d6914b0d35f7-00-7u2f3pny3dry.riker.replit.dev/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

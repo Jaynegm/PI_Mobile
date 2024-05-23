@@ -1,6 +1,5 @@
 package com.example.atividade001
 
-import Produto
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity

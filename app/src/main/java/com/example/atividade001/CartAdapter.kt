@@ -1,5 +1,5 @@
 package com.example.atividade001
-import Produto
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -76,7 +76,7 @@ class CartAdapter(
     }
 
     private fun getRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.repl.co/")
+        .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.replit.dev/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

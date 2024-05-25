@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,9 +25,18 @@ class ProdutosDetalhesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_produtos_detalhes)
 
         val nomeProduto = intent.getStringExtra("NOME_PRODUTO") ?: "Nome nÃƒÂ£o disponÃƒÂ­vel"
+        val imagemProduto = intent.getStringExtra("IMAGEM_URL") ?: "Imagem indisponível"
         val descricaoProduto = intent.getStringExtra("DESCRICAO_PRODUTO") ?: "DescriÃƒÂ§ÃƒÂ£o nÃƒÂ£o disponÃƒÂ­vel"
         val produtoId = intent.getIntExtra("ID_PRODUTO", 0)
         val quantidadeDisponivel = intent.getIntExtra("QUANTIDADE_DISPONIVEL", 0)
+
+
+        Glide.with(this)
+            .load(imagemProduto)
+            .placeholder(R.drawable.ic_launcher_background) // placeholder
+            .error(R.drawable.ic_launcher_background) // indica erro
+            .into(findViewById(R.id.imagem_produto))
+
 
         findViewById<TextView>(R.id.txtNomeProduto).text = nomeProduto
         findViewById<TextView>(R.id.txtDescricaoProduto).text = descricaoProduto

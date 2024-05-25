@@ -18,4 +18,5 @@
     <string name="cvc">CVC</string>
     <string name="finish_payment">Finalizar Pagamento</string>
     <string name="total_value">Valor Total: $0.00</string>
+
 </resources>

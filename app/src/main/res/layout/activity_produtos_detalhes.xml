@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FAFAFA">
 
     <TextView
         android:id="@+id/txtNomeProduto"
@@ -13,12 +15,22 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Produto Nome"
-        android:textColor="#333"
+        android:textColor="#333333"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagem_produto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeProduto" />
 
     <TextView
         android:id="@+id/txtDescricaoProduto"
@@ -26,17 +38,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Descricao"
-        android:textColor="#666"
+        android:text="Descrição"
+        android:textColor="#666666"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNomeProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/imagem_produto" />
 
     <TextView
         android:id="@+id/txtQuantidadeLabel"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="start"
         android:text="Quantidade desejada:"
         android:textSize="16sp"
@@ -49,9 +62,11 @@
         android:id="@+id/editQuantidadeDesejada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:hint="0"
         android:inputType="number"
-        android:minHeight="48dp"
+        android:padding="16dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtQuantidadeLabel"
         app:layout_constraintTop_toBottomOf="@+id/txtDescricaoProduto" />
@@ -60,7 +75,8 @@
         android:id="@+id/txtQuantidadeDisponivelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quantidade disponÃƒÂ­vel:"
+        android:layout_marginTop="16dp"
+        android:text="Quantidade disponível:"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editQuantidadeDesejada" />
@@ -69,30 +85,44 @@
         android:id="@+id/txtQuantidadeDisponivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="0"
         android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtQuantidadeDisponivelLabel"
-        app:layout_constraintStart_toEndOf="@+id/txtQuantidadeLabel" />
+        app:layout_constraintStart_toEndOf="@+id/txtQuantidadeDisponivelLabel" />
 
     <Button
         android:id="@+id/btnAdicionarAoCarrinho"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="#2C7D8C"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#2C7D8C"
         android:text="Adicionar ao Carrinho"
         android:textAllCaps="false"
-        android:textColor="#FFF"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtQuantidadeDisponivel" />
 
     <Button
         android:id="@+id/btnCarrinho"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FFC107"
         android:text="Carrinho"
-        app:layout_constraintStart_toStartOf="@+id/btnAdicionarAoCarrinho"
-        app:layout_constraintTop_toTopOf="@+id/txtNomeProduto" />
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAdicionarAoCarrinho" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

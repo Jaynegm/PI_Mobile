@@ -76,7 +76,7 @@ class CartAdapter(
     }
 
     private fun getRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("https://e6d39234-19eb-45a1-ae47-3ecd3998ca23-00-m3zib2y99fol.janeway.replit.dev/")
+        .baseUrl("https://12746cbd-77e6-4f72-9c25-47a219be274e-00-274zo2e79g7dj.riker.replit.dev/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

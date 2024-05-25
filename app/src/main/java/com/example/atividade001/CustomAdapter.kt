@@ -39,7 +39,7 @@ class CustomAdapter(private val dataSet: List<Produto>) :
         Glide.with(viewHolder.itemView.context)
             .load(produto.imagemUrl)
             .placeholder(R.drawable.ic_launcher_background) // placeholder
-            .error(com.google.android.material.R.drawable.mtrl_ic_error) // indica erro
+            .error(R.drawable.ic_launcher_background) // indica erro
             .into(viewHolder.imagem)
 
         viewHolder.btnComprar.setOnClickListener {
